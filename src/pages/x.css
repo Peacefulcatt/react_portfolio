@@ -1,0 +1,71 @@
+/* Buttons */
+.cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+  }
+  
+  .btn {
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+  }
+  
+  .btn.primary {
+    background-color: #4f46e5;
+    color: white;
+    box-shadow: 0 4px 6px rgba(79, 70, 229, 0.3);
+  }
+  
+  .btn.primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 15px rgba(79, 70, 229, 0.4);
+  }
+  
+  .btn.secondary {
+    border: 2px solid #4f46e5;
+    color: #4f46e5;
+  }
+  
+  .dark-mode .btn.secondary {
+    border-color: #818cf8;
+    color: #818cf8;
+  }
+  
+  .btn.secondary:hover {
+    background-color: #4f46e5;
+    color: white;
+  }
+  
+  .dark-mode .btn.secondary:hover {
+    background-color: #818cf8;
+  }
+  
+  /* Social Links */
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  
+  .social-links a {
+    color: #4a5568;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  .dark-mode .social-links a {
+    color: #e2e8f0;
+  }
+  
+  .social-links a:hover {
+    color: #4f46e5;
+    transform: translateY(-3px);
+  }
+  
+  .dark-mode .social-links a:hover {
+    color: #818cf8;
+  }

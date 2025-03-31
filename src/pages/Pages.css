@@ -1,0 +1,79 @@
+/* pages.css - Updated Version */
+.page-container {
+  padding: 2rem;
+  min-height: 80vh;
+  position: relative; /* For proper z-index stacking */
+  z-index: 1; /* Ensures content stays above particles */
+}
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page h2 {
+  color: var(--text-primary, #2c3e50);
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+.page p {
+  color: var(--text-secondary, #7f8c8d);
+  line-height: 1.6;
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin-bottom: 1.5rem;
+}
+
+/* Specific page styles with improved contrast */
+.home-page {
+  background-color: var(--bg-home, #f9f9f9);
+  padding: 3rem 2rem;
+}
+
+.about-page {
+  background-color: var(--bg-about, #f0f8ff);
+}
+
+.projects-page {
+  background-color: var(--bg-projects, #fffaf0);
+}
+
+.contact-page {
+  background-color: var(--bg-contact, #f5f5f5);
+}
+
+/* Projects grid with better responsive behavior */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+  padding: 1rem 0;
+}
+
+/* Dark mode compatibility */
+.dark-mode {
+  --text-primary: #f8f9fa;
+  --text-secondary: #e2e8f0;
+  --bg-home: #1a202c;
+  --bg-about: #2d3748;
+  --bg-projects: #2d3748;
+  --bg-contact: #1a202c;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .page-container {
+    padding: 1.5rem;
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .page h2 {
+    font-size: 1.8rem;
+  }
+}
