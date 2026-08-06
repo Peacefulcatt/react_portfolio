@@ -11,9 +11,9 @@ import { site } from '../data/site';
   <section class="section">
     <div class="container contact">
       <div class="info reveal">
-        <h1 class="section-heading">Get in Touch</h1>
+        <h1 class="section-heading">Contact</h1>
         <p class="section-lead">
-          Have a project in mind or want to discuss opportunities? Reach out — I read every message.
+          Have a project in mind or want to discuss opportunities? Reach out.
         </p>
 
         <dl class="details">
@@ -49,44 +49,40 @@ import { site } from '../data/site';
   .contact {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    gap: 4rem;
     align-items: start;
   }
 
   .details {
-    margin: 2rem 0 0;
+    margin: 2.5rem 0 0;
     display: grid;
-    gap: 1.1rem;
+    gap: 1.25rem;
   }
 
   .details dt {
-    font-size: 0.85rem;
+    font-size: 0.78rem;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--teal-deep);
-    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    font-weight: 600;
   }
 
   .details dd {
-    margin: 0.25rem 0 0;
+    margin: 0.2rem 0 0;
   }
 
   .details a {
     text-decoration: none;
-    font-weight: 500;
   }
 
   .form-panel {
-    padding: 1.5rem;
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    background: rgba(255, 255, 255, 0.72);
+    padding-top: 0.25rem;
   }
 
   @media (max-width: 800px) {
     .contact {
       grid-template-columns: 1fr;
-      gap: 2rem;
+      gap: 2.5rem;
     }
   }
 </style>

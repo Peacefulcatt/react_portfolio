@@ -33,7 +33,7 @@ const cards: BlogCard[] = posts.map((post) => ({
     <div class="container">
       <h1 class="section-heading reveal">Blog</h1>
       <p class="section-lead reveal reveal-delay-1">
-        Thoughts, tutorials, and lessons from building software across web, AI, and product work.
+        Notes on engineering, AI, and building useful software.
       </p>
       <div class="wrap reveal reveal-delay-2">
         <BlogFilter client:load posts={cards} />
@@ -44,6 +44,7 @@ const cards: BlogCard[] = posts.map((post) => ({
 
 <style>
   .wrap {
-    margin-top: 2.5rem;
+    margin-top: 3rem;
+    max-width: 46rem;
   }
 </style>
