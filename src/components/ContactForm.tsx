@@ -45,7 +45,7 @@ export default function ContactForm() {
   return (
     <form className="contact-form" onSubmit={onSubmit} noValidate>
       <div className={`field ${errors.name ? 'error' : ''}`}>
-        <label htmlFor="name">Your name</label>
+        <label htmlFor="name">Name</label>
         <input
           id="name"
           name="name"
@@ -59,7 +59,7 @@ export default function ContactForm() {
       </div>
 
       <div className={`field ${errors.email ? 'error' : ''}`}>
-        <label htmlFor="email">Email address</label>
+        <label htmlFor="email">Email</label>
         <input
           id="email"
           name="email"
@@ -74,7 +74,7 @@ export default function ContactForm() {
       </div>
 
       <div className={`field ${errors.message ? 'error' : ''}`}>
-        <label htmlFor="message">Your message</label>
+        <label htmlFor="message">Message</label>
         <textarea
           id="message"
           name="message"
@@ -94,38 +94,49 @@ export default function ContactForm() {
 
       {success && (
         <p className="success" role="status">
-          Message sent successfully. I&apos;ll get back to you soon.
+          Message sent. I&apos;ll get back to you soon.
         </p>
       )}
 
       <style>{`
         .contact-form {
           display: grid;
-          gap: 1rem;
+          gap: 1.25rem;
         }
 
         .field {
           display: grid;
-          gap: 0.4rem;
+          gap: 0.35rem;
         }
 
         .field label {
+          font-size: 0.85rem;
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          color: var(--muted);
           font-weight: 600;
         }
 
         .field input,
         .field textarea {
           width: 100%;
-          border: 1px solid var(--line);
-          border-radius: 0.4rem;
-          background: rgba(255, 255, 255, 0.8);
-          padding: 0.8rem 0.9rem;
+          border: 0;
+          border-bottom: 1px solid var(--line);
+          border-radius: 0;
+          background: transparent;
+          padding: 0.7rem 0;
           color: var(--ink);
+        }
+
+        .field input:focus,
+        .field textarea:focus {
+          outline: none;
+          border-bottom-color: var(--ink);
         }
 
         .field.error input,
         .field.error textarea {
-          border-color: #b42318;
+          border-bottom-color: #b42318;
         }
 
         .field span,
@@ -139,12 +150,11 @@ export default function ContactForm() {
 
         .success {
           margin: 0;
-          color: var(--teal-deep);
-          font-weight: 600;
+          color: var(--muted);
         }
 
         .btn:disabled {
-          opacity: 0.7;
+          opacity: 0.6;
           cursor: wait;
         }
       `}</style>

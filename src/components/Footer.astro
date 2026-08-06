@@ -5,7 +5,7 @@ const year = new Date().getFullYear();
 
 <footer class="footer">
   <div class="container footer-inner">
-    <p>© {year} {site.name}. All rights reserved.</p>
+    <p>© {year} {site.name}</p>
     <div class="social">
       <a href={site.social.github} target="_blank" rel="noopener noreferrer">GitHub</a>
       <a href={site.social.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -17,9 +17,8 @@ const year = new Date().getFullYear();
 <style>
   .footer {
     border-top: 1px solid var(--line);
-    padding: 1.75rem 0;
+    padding: 1.5rem 0;
     margin-top: auto;
-    background: rgba(255, 255, 255, 0.45);
   }
 
   .footer-inner {
@@ -32,22 +31,18 @@ const year = new Date().getFullYear();
 
   .footer p {
     margin: 0;
-    color: var(--ink-soft);
-    font-size: 0.95rem;
+    color: var(--muted);
+    font-size: 0.9rem;
   }
 
   .social {
     display: flex;
-    gap: 1rem;
+    gap: 1.25rem;
   }
 
   .social a {
     text-decoration: none;
-    font-weight: 500;
-    color: var(--ink-soft);
-  }
-
-  .social a:hover {
-    color: var(--teal-deep);
+    font-size: 0.9rem;
+    color: var(--muted);
   }
 </style>

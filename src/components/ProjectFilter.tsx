@@ -38,32 +38,28 @@ export default function ProjectFilter({ projects }: Props) {
         ))}
       </div>
 
-      <div className="grid">
+      <div className="list">
         {filtered.map((project) => (
           <article key={project.id} className="project">
             <div className="media">
               <img src={project.image} alt="" loading="lazy" />
-              <div className="links">
-                <a href={project.github} target="_blank" rel="noopener noreferrer">
-                  Code
-                </a>
-                {project.demo !== '#' && (
-                  <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                    Live
-                  </a>
-                )}
-              </div>
             </div>
             <div className="body">
-              <h3>{project.title}</h3>
-              <p>{project.description}</p>
-              <div className="tags">
-                {project.tags.map((tag) => (
-                  <span key={tag} className="tag">
-                    {tag}
-                  </span>
-                ))}
+              <div className="top">
+                <h3>{project.title}</h3>
+                <div className="links">
+                  <a href={project.github} target="_blank" rel="noopener noreferrer">
+                    Code
+                  </a>
+                  {project.demo !== '#' && (
+                    <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                      Live
+                    </a>
+                  )}
+                </div>
               </div>
+              <p>{project.description}</p>
+              <p className="tags">{project.tags.join(' · ')}</p>
             </div>
           </article>
         ))}
@@ -72,98 +68,110 @@ export default function ProjectFilter({ projects }: Props) {
       <style>{`
         .project-filter {
           display: grid;
-          gap: 2rem;
+          gap: 2.5rem;
         }
 
         .filters {
           display: flex;
           flex-wrap: wrap;
-          gap: 0.6rem;
+          gap: 0.35rem 1rem;
+          border-bottom: 1px solid var(--line);
+          padding-bottom: 1rem;
         }
 
         .filters button {
-          border: 1px solid var(--line);
-          background: rgba(255, 255, 255, 0.65);
-          color: var(--ink-soft);
-          border-radius: 0.35rem;
-          padding: 0.45rem 0.8rem;
+          border: 0;
+          background: transparent;
+          color: var(--muted);
+          padding: 0;
           cursor: pointer;
           font-weight: 500;
+          font-size: 0.95rem;
         }
 
         .filters button.active,
         .filters button:hover {
-          background: var(--ink);
-          border-color: var(--ink);
-          color: white;
+          color: var(--ink);
         }
 
-        .grid {
+        .list {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-          gap: 1.5rem;
+          gap: 0;
         }
 
         .project {
-          overflow: hidden;
-          border: 1px solid var(--line);
-          border-radius: var(--radius);
-          background: rgba(255, 255, 255, 0.72);
+          display: grid;
+          grid-template-columns: 12rem 1fr;
+          gap: 1.75rem;
+          padding: 1.75rem 0;
+          border-top: 1px solid var(--line);
+        }
+
+        .project:last-child {
+          border-bottom: 1px solid var(--line);
         }
 
         .media {
-          position: relative;
-          aspect-ratio: 16 / 10;
+          aspect-ratio: 4 / 3;
           overflow: hidden;
-          background: #d7e2ea;
+          background: var(--bg-soft);
         }
 
         .media img {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          transition: transform 400ms ease;
+          filter: grayscale(1);
+          transition: filter 250ms ease;
         }
 
         .project:hover .media img {
-          transform: scale(1.04);
+          filter: grayscale(0.2);
         }
 
-        .links {
-          position: absolute;
-          inset: auto 0.75rem 0.75rem auto;
+        .top {
           display: flex;
-          gap: 0.5rem;
-        }
-
-        .links a {
-          text-decoration: none;
-          background: rgba(14, 28, 47, 0.88);
-          color: white;
-          padding: 0.35rem 0.65rem;
-          border-radius: 0.3rem;
-          font-size: 0.85rem;
-          font-weight: 600;
-        }
-
-        .body {
-          padding: 1.15rem 1.2rem 1.35rem;
+          justify-content: space-between;
+          gap: 1rem;
+          align-items: baseline;
+          margin-bottom: 0.5rem;
         }
 
         .body h3 {
           font-size: 1.25rem;
-          margin-bottom: 0.45rem;
+          margin: 0;
+        }
+
+        .links {
+          display: flex;
+          gap: 0.9rem;
+          flex-shrink: 0;
+        }
+
+        .links a {
+          text-decoration: none;
+          font-size: 0.9rem;
+          color: var(--muted);
         }
 
         .body p {
-          color: var(--ink-soft);
-          margin-bottom: 0.9rem;
+          color: var(--muted);
+          margin: 0 0 0.65rem;
         }
 
         .tags {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 0.4rem;
+          font-size: 0.88rem;
+        }
+
+        @media (max-width: 700px) {
+          .project {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+          }
+
+          .media {
+            max-width: 16rem;
+          }
         }
       `}</style>
     </div>
