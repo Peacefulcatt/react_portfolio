@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm';
+import { site } from '../data/site';
+---
+
+<BaseLayout
+  title="Contact"
+  description={`Get in touch with ${site.name} about projects and opportunities.`}
+>
+  <section class="section">
+    <div class="container contact">
+      <div class="info reveal">
+        <h1 class="section-heading">Get in Touch</h1>
+        <p class="section-lead">
+          Have a project in mind or want to discuss opportunities? Reach out — I read every message.
+        </p>
+
+        <dl class="details">
+          <div>
+            <dt>Location</dt>
+            <dd>{site.location}</dd>
+          </div>
+          <div>
+            <dt>Email</dt>
+            <dd>
+              <a href={`mailto:${site.email}`}>{site.email}</a>
+            </dd>
+          </div>
+          <div>
+            <dt>GitHub</dt>
+            <dd>
+              <a href={site.social.github} target="_blank" rel="noopener noreferrer">
+                github.com/Peacefulcatt
+              </a>
+            </dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="form-panel reveal reveal-delay-1">
+        <ContactForm client:load />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .details {
+    margin: 2rem 0 0;
+    display: grid;
+    gap: 1.1rem;
+  }
+
+  .details dt {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--teal-deep);
+    font-weight: 700;
+  }
+
+  .details dd {
+    margin: 0.25rem 0 0;
+  }
+
+  .details a {
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .form-panel {
+    padding: 1.5rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.72);
+  }
+
+  @media (max-width: 800px) {
+    .contact {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>

@@ -1,0 +1,200 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+
+const skills = [
+  { name: 'Frontend', items: ['React', 'Astro', 'JavaScript', 'HTML/CSS'] },
+  { name: 'Backend', items: ['Node.js', 'Express', 'Python', 'Django'] },
+  { name: 'Data', items: ['MongoDB', 'PostgreSQL', 'Firebase', 'MySQL'] },
+  { name: 'Product Focus', items: ['AI Systems', 'IoT', 'Healthcare Tech', 'UX Craft'] },
+];
+
+const experience = [
+  {
+    year: '2022 — Present',
+    role: 'Senior Software Engineer',
+    company: 'Tech Solutions Inc.',
+    description: 'Leading frontend development and shipping product features end to end.',
+  },
+  {
+    year: '2019 — 2022',
+    role: 'Software Engineer',
+    company: 'Digital Innovations',
+    description: 'Built and maintained web applications with React and Node.js.',
+  },
+  {
+    year: '2017 — 2019',
+    role: 'Junior Developer',
+    company: 'StartUp Labs',
+    description: 'Shipped responsive interfaces and improved product reliability.',
+  },
+];
+---
+
+<BaseLayout title="About" description={`About ${site.name} — ${site.title}.`}>
+  <section class="section">
+    <div class="container about">
+      <div class="intro reveal">
+        <h1 class="section-heading">About Me</h1>
+        <p class="section-lead">
+          I'm a software engineer with 5+ years of experience building digital products.
+          My path started with a first website at 15, and it grew into a focus on intelligent
+          systems for healthcare and connected devices.
+        </p>
+        <p class="section-lead">
+          Away from the keyboard, I'm usually outdoors, reading sci-fi, or testing a new recipe.
+          I stay curious — and I build with that curiosity.
+        </p>
+      </div>
+
+      <div class="portrait reveal reveal-delay-1" aria-hidden="true">
+        <div class="portrait-frame">
+          <img
+            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=80"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section skills-section">
+    <div class="container">
+      <h2 class="section-heading reveal">Skills</h2>
+      <p class="section-lead reveal reveal-delay-1">
+        A practical stack for building reliable interfaces and intelligent systems.
+      </p>
+      <div class="skills">
+        {
+          skills.map((skill, index) => (
+            <div class={`skill reveal reveal-delay-${Math.min(index + 1, 3)}`}>
+              <h3>{skill.name}</h3>
+              <ul>
+                {skill.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-heading reveal">Experience</h2>
+      <ol class="timeline">
+        {
+          experience.map((item) => (
+            <li class="reveal">
+              <div class="year">{item.year}</div>
+              <div>
+                <h3>{item.role}</h3>
+                <p class="company">{item.company}</p>
+                <p>{item.description}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .intro .section-lead + .section-lead {
+    margin-top: 1rem;
+  }
+
+  .portrait-frame {
+    overflow: hidden;
+    border-radius: 1rem;
+    aspect-ratio: 4 / 5;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+  }
+
+  .portrait-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .skills-section {
+    background: rgba(255, 255, 255, 0.4);
+    border-block: 1px solid var(--line);
+  }
+
+  .skills {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .skill h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+    color: var(--teal-deep);
+  }
+
+  .skill ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.4rem;
+    color: var(--ink-soft);
+  }
+
+  .timeline {
+    list-style: none;
+    margin: 2rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .timeline li {
+    display: grid;
+    grid-template-columns: 10rem 1fr;
+    gap: 1.25rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .year {
+    font-weight: 600;
+    color: var(--teal-deep);
+  }
+
+  .company {
+    color: var(--ink-soft);
+    margin-bottom: 0.4rem;
+  }
+
+  @media (max-width: 900px) {
+    .about {
+      grid-template-columns: 1fr;
+    }
+
+    .skills {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .skills,
+    .timeline li {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,53 @@
+---
+import { site } from '../data/site';
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <p>© {year} {site.name}. All rights reserved.</p>
+    <div class="social">
+      <a href={site.social.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href={site.social.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href={site.social.twitter} target="_blank" rel="noopener noreferrer">Twitter</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--line);
+    padding: 1.75rem 0;
+    margin-top: auto;
+    background: rgba(255, 255, 255, 0.45);
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .footer p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+
+  .social {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .social a {
+    text-decoration: none;
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
+
+  .social a:hover {
+    color: var(--teal-deep);
+  }
+</style>

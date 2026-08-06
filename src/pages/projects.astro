@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectFilter from '../components/ProjectFilter';
+import { projects } from '../data/projects';
+---
+
+<BaseLayout
+  title="Projects"
+  description="Selected projects by Umut Yıldız across AI, IoT, and product engineering."
+>
+  <section class="section">
+    <div class="container">
+      <h1 class="section-heading reveal">Projects</h1>
+      <p class="section-lead reveal reveal-delay-1">
+        Recent work focused on practical systems — from healthcare AI to product dashboards.
+      </p>
+      <div class="filter-wrap reveal reveal-delay-2">
+        <ProjectFilter client:load projects={projects} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .filter-wrap {
+    margin-top: 2.5rem;
+  }
+</style>
