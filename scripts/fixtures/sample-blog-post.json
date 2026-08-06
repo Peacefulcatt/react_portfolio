@@ -1,0 +1,10 @@
+{
+  "slug": "from-commits-to-blog",
+  "title": "From Git Commits to Blog Posts",
+  "excerpt": "How commit activity becomes publishable writing for the portfolio via Telegram.",
+  "date": "2026-08-06",
+  "tags": ["Automation", "Engineering"],
+  "readTime": "3 min read",
+  "source": "telegram-bot",
+  "body": "## The idea\n\nMeaningful commits already tell a story. The Telegram bot turns that trail into draft writing — CV bullets, LinkedIn copy, or a short blog post.\n\n## Landing in the portfolio\n\nApproved blog drafts are posted here as Markdown under `src/content/blog/`. Astro picks them up on the next deploy, so `/blog` stays the single public reading surface.\n\n## What to write next\n\nKeep posts short, concrete, and tied to something you actually shipped."
+}

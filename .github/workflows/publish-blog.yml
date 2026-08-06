@@ -1,0 +1,79 @@
+name: Publish blog post
+
+# Triggered by the Telegram bot (or manually) to drop Markdown into
+# src/content/blog/. Vercel/Netlify then rebuilds the portfolio on push.
+#
+# Telegram bot example (GitHub API):
+#   POST /repos/Peacefulcatt/react_portfolio/dispatches
+#   {
+#     "event_type": "publish-blog",
+#     "client_payload": {
+#       "slug": "shipped-feature-x",
+#       "title": "Shipped Feature X",
+#       "excerpt": "What changed and why it matters.",
+#       "date": "2026-08-06",
+#       "tags": ["Engineering"],
+#       "readTime": "4 min read",
+#       "body": "## Context\n\n...",
+#       "source": "telegram-bot"
+#     }
+#   }
+
+on:
+  repository_dispatch:
+    types: [publish-blog]
+  workflow_dispatch:
+    inputs:
+      payload:
+        description: 'Blog post JSON (same shape as repository_dispatch client_payload)'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Write payload
+        env:
+          DISPATCH_PAYLOAD: ${{ toJson(github.event.client_payload) }}
+          MANUAL_PAYLOAD: ${{ inputs.payload }}
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            printf '%s\n' "$MANUAL_PAYLOAD" > /tmp/blog-post.json
+          else
+            printf '%s\n' "$DISPATCH_PAYLOAD" > /tmp/blog-post.json
+          fi
+          node -e "JSON.parse(require('fs').readFileSync('/tmp/blog-post.json','utf8'))"
+
+      - name: Publish Markdown post
+        id: publish
+        run: |
+          OUTPUT=$(node scripts/publish-blog-post.mjs /tmp/blog-post.json)
+          echo "$OUTPUT"
+          PATH_REL=$(echo "$OUTPUT" | node -e "let s='';process.stdin.on('data',d=>s+=d);process.stdin.on('end',()=>console.log(JSON.parse(s).path))")
+          SLUG=$(echo "$OUTPUT" | node -e "let s='';process.stdin.on('data',d=>s+=d);process.stdin.on('end',()=>console.log(JSON.parse(s).slug))")
+          echo "path=$PATH_REL" >> "$GITHUB_OUTPUT"
+          echo "slug=$SLUG" >> "$GITHUB_OUTPUT"
+
+      - name: Commit and push
+        run: |
+          git config user.name "portfolio-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "${{ steps.publish.outputs.path }}"
+          if git diff --cached --quiet; then
+            echo "No file changes to commit."
+            exit 0
+          fi
+          git commit -m "content(blog): publish ${{ steps.publish.outputs.slug }} via telegram bot"
+          git push

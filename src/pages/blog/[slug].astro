@@ -30,6 +30,7 @@ const dateLabel = post.data.date.toLocaleDateString('en-US', {
           <time datetime={post.data.date.toISOString()}>{dateLabel}</time>
           <span>{post.data.readTime}</span>
           <span>{post.data.tags.join(' · ')}</span>
+          {post.data.source && <span class="source">via {post.data.source}</span>}
         </div>
       </header>
       <div class="content reveal reveal-delay-1">
@@ -66,6 +67,10 @@ const dateLabel = post.data.date.toLocaleDateString('en-US', {
     margin-bottom: 2.5rem;
     padding-bottom: 1.5rem;
     border-bottom: 1px solid var(--line);
+  }
+
+  .source {
+    text-transform: lowercase;
   }
 
   .content :global(h2) {
