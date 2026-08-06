@@ -41,26 +41,21 @@ export default function ProjectFilter({ projects }: Props) {
       <div className="list">
         {filtered.map((project) => (
           <article key={project.id} className="project">
-            <div className="media">
-              <img src={project.image} alt="" loading="lazy" />
-            </div>
-            <div className="body">
-              <div className="top">
-                <h3>{project.title}</h3>
-                <div className="links">
-                  <a href={project.github} target="_blank" rel="noopener noreferrer">
-                    Code
+            <div className="top">
+              <h3>{project.title}</h3>
+              <div className="links">
+                <a href={project.github} target="_blank" rel="noopener noreferrer">
+                  Code
+                </a>
+                {project.demo !== '#' && (
+                  <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                    Live
                   </a>
-                  {project.demo !== '#' && (
-                    <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                      Live
-                    </a>
-                  )}
-                </div>
+                )}
               </div>
-              <p>{project.description}</p>
-              <p className="tags">{project.tags.join(' · ')}</p>
             </div>
+            <p>{project.description}</p>
+            <p className="tags">{project.tags.join(' · ')}</p>
           </article>
         ))}
       </div>
@@ -100,33 +95,12 @@ export default function ProjectFilter({ projects }: Props) {
         }
 
         .project {
-          display: grid;
-          grid-template-columns: 12rem 1fr;
-          gap: 1.75rem;
           padding: 1.75rem 0;
           border-top: 1px solid var(--line);
         }
 
         .project:last-child {
           border-bottom: 1px solid var(--line);
-        }
-
-        .media {
-          aspect-ratio: 4 / 3;
-          overflow: hidden;
-          background: var(--bg-soft);
-        }
-
-        .media img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          filter: grayscale(1);
-          transition: filter 250ms ease;
-        }
-
-        .project:hover .media img {
-          filter: grayscale(0.2);
         }
 
         .top {
@@ -137,8 +111,8 @@ export default function ProjectFilter({ projects }: Props) {
           margin-bottom: 0.5rem;
         }
 
-        .body h3 {
-          font-size: 1.25rem;
+        .project h3 {
+          font-size: 1.3rem;
           margin: 0;
         }
 
@@ -154,24 +128,15 @@ export default function ProjectFilter({ projects }: Props) {
           color: var(--muted);
         }
 
-        .body p {
+        .project p {
           color: var(--muted);
           margin: 0 0 0.65rem;
+          max-width: 40rem;
         }
 
         .tags {
           font-size: 0.88rem;
-        }
-
-        @media (max-width: 700px) {
-          .project {
-            grid-template-columns: 1fr;
-            gap: 1rem;
-          }
-
-          .media {
-            max-width: 16rem;
-          }
+          margin-bottom: 0 !important;
         }
       `}</style>
     </div>
