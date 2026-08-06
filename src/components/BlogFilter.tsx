@@ -107,7 +107,7 @@ export default function BlogFilter({ posts }: Props) {
         .search input:focus,
         .select select:focus {
           outline: none;
-          border-bottom-color: var(--ink);
+          border-bottom-color: var(--accent);
         }
 
         .list {

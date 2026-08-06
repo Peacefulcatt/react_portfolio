@@ -113,7 +113,7 @@ export default function ContactForm() {
           font-size: 0.85rem;
           letter-spacing: 0.04em;
           text-transform: uppercase;
-          color: var(--muted);
+          color: var(--accent);
           font-weight: 600;
         }
 
@@ -131,7 +131,7 @@ export default function ContactForm() {
         .field input:focus,
         .field textarea:focus {
           outline: none;
-          border-bottom-color: var(--ink);
+          border-bottom-color: var(--accent);
         }
 
         .field.error input,
