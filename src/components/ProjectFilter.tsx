@@ -86,7 +86,7 @@ export default function ProjectFilter({ projects }: Props) {
 
         .filters button.active,
         .filters button:hover {
-          color: var(--ink);
+          color: var(--accent);
         }
 
         .list {

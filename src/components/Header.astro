@@ -46,7 +46,7 @@ const isActive = (href: string) => {
     position: sticky;
     top: 0;
     z-index: 20;
-    background: rgba(247, 247, 245, 0.9);
+    background: rgba(250, 248, 252, 0.9);
     border-bottom: 1px solid var(--line);
   }
 
@@ -64,6 +64,7 @@ const isActive = (href: string) => {
     font-size: 0.95rem;
     letter-spacing: 0.08em;
     text-decoration: none;
+    color: var(--accent-deep);
   }
 
   .nav {
@@ -81,8 +82,7 @@ const isActive = (href: string) => {
 
   .nav a:hover,
   .nav a.active {
-    color: var(--ink);
-    opacity: 1;
+    color: var(--accent);
   }
 
   .menu-toggle {

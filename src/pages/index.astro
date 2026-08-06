@@ -43,25 +43,24 @@ import { withBase } from '../utils/paths';
   .glow {
     position: absolute;
     border-radius: 50%;
-    filter: blur(40px);
-    opacity: 0.55;
+    filter: blur(48px);
     animation: drift-soft 16s ease-in-out infinite alternate;
   }
 
   .glow-a {
-    width: min(50vw, 28rem);
-    height: min(50vw, 28rem);
-    top: 8%;
-    right: 6%;
-    background: rgba(17, 17, 17, 0.08);
+    width: min(52vw, 30rem);
+    height: min(52vw, 30rem);
+    top: 6%;
+    right: 4%;
+    background: rgba(75, 42, 107, 0.22);
   }
 
   .glow-b {
-    width: min(42vw, 22rem);
-    height: min(42vw, 22rem);
-    bottom: 10%;
-    left: 4%;
-    background: rgba(17, 17, 17, 0.05);
+    width: min(44vw, 24rem);
+    height: min(44vw, 24rem);
+    bottom: 8%;
+    left: 2%;
+    background: rgba(49, 24, 72, 0.14);
     animation-delay: -6s;
   }
 
@@ -69,10 +68,10 @@ import { withBase } from '../utils/paths';
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(rgba(17, 17, 17, 0.045) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(17, 17, 17, 0.045) 1px, transparent 1px);
+      linear-gradient(rgba(75, 42, 107, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(75, 42, 107, 0.08) 1px, transparent 1px);
     background-size: 72px 72px;
-    mask-image: radial-gradient(circle at 30% 40%, black 20%, transparent 72%);
+    mask-image: radial-gradient(circle at 28% 42%, black 18%, transparent 72%);
     animation: fade-in 1.2s ease both;
   }
 
@@ -90,6 +89,7 @@ import { withBase } from '../utils/paths';
     font-weight: 700;
     letter-spacing: -0.045em;
     line-height: 0.92;
+    color: var(--accent-deep);
   }
 
   h1 {
@@ -98,7 +98,7 @@ import { withBase } from '../utils/paths';
     font-weight: 500;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: var(--muted);
+    color: var(--accent);
   }
 
   .lede {
