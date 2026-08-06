@@ -51,7 +51,7 @@ function estimateReadTime(body) {
 
 function yamlEscape(value) {
   const text = String(value);
-  if (/[:#\[\]{},&*!|>'"%@`]/.test(text) || /^\s|\s$/.test(text)) {
+  if (/[\s:#\[\]{},&*!|>'"%@`]/.test(text)) {
     return JSON.stringify(text);
   }
   return text;
