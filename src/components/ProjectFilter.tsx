@@ -21,6 +21,23 @@ export default function ProjectFilter({ projects }: Props) {
     [filter, projects],
   );
 
+  if (projects.length === 0) {
+    return (
+      <div className="project-filter">
+        <p className="empty">Project write-ups are on the way. Check back soon.</p>
+        <style>{`
+          .empty {
+            color: var(--muted);
+            margin: 0;
+            padding: 1.75rem 0;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+          }
+        `}</style>
+      </div>
+    );
+  }
+
   return (
     <div className="project-filter">
       <div className="filters" role="tablist" aria-label="Filter projects by technology">
