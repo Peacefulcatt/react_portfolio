@@ -5,8 +5,5 @@ export type Project = {
   tags: string[];
   github: string;
   demo: string;
-  image: string;
+  image?: string;
 };
-
-/** Real projects only — placeholders removed. Add entries as you want them public. */
-export const projects: Project[] = [];

@@ -42,6 +42,28 @@ The site is a static Astro build (`dist/`) and works on **Vercel** or **Netlify*
 
 Optional: set `site` in `astro.config.mjs` to your production domain for accurate canonical URLs.
 
+## Projects content
+
+Project cards on `/projects` come from Markdown files in `src/content/projects/`. Astro reads them at build time (same pattern as the blog).
+
+### Frontmatter contract
+
+```md
+---
+title: "Project name"
+description: "One or two sentences for the project list."
+tags: ["Healthcare AI", "Python"]
+github: "https://github.com/Peacefulcatt/your-repo"
+demo: "#"   # or a live URL; "#" hides the Live link
+order: 1    # optional; lower numbers appear first
+image: "https://…"  # optional; reserved for future use
+---
+
+Optional Markdown body for a future case-study page.
+```
+
+Add a new `.md` file under `src/content/projects/`, commit, and redeploy.
+
 ## Blog publishing (Telegram bot)
 
 Blog posts are Markdown files in `src/content/blog/`. Astro’s content collection reads them at build time, so anything written there automatically appears on `/blog` after deploy.

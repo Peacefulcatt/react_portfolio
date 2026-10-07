@@ -14,4 +14,19 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { blog };
+const projects = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/projects' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    tags: z.array(z.string()),
+    github: z.string().url(),
+    /** Live demo URL; use "#" to hide the Live link on /projects. */
+    demo: z.string().default('#'),
+    image: z.string().optional(),
+    /** Lower numbers appear first on /projects. */
+    order: z.number().optional(),
+  }),
+});
+
+export const collections = { blog, projects };
