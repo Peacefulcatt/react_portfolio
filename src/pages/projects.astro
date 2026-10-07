@@ -1,7 +1,22 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectFilter from '../components/ProjectFilter';
-import { projects } from '../data/projects';
+import type { Project } from '../data/projects';
+
+const entries = (await getCollection('projects')).sort(
+  (a, b) => (a.data.order ?? 999) - (b.data.order ?? 999),
+);
+
+const projects: Project[] = entries.map((entry, index) => ({
+  id: index + 1,
+  title: entry.data.title,
+  description: entry.data.description,
+  tags: entry.data.tags,
+  github: entry.data.github,
+  demo: entry.data.demo,
+  image: entry.data.image,
+}));
 ---
 
 <BaseLayout
@@ -12,7 +27,7 @@ import { projects } from '../data/projects';
     <div class="container">
       <h1 class="section-heading reveal">Projects</h1>
       <p class="section-lead reveal reveal-delay-1">
-        Selected work across healthcare AI, product interfaces, and connected systems — case studies coming soon.
+        Selected work across healthcare AI, mobile wellness products, and engineering tooling.
       </p>
       <div class="filter-wrap reveal reveal-delay-2">
         <ProjectFilter client:load projects={projects} />
