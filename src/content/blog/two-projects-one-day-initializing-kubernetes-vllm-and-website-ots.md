@@ -1,6 +1,6 @@
 ---
 title: "Two Projects, One Day: Initializing Kubernetes_vLLM and website_ots"
-excerpt: "On July 13, 2026, work began on **Kubernetes_vLLM** with a single initialization commit. This project appears to focus on deploying vLLM—a high-performance inference engine for large language models—…"
+excerpt: "On July 13, 2026, Kubernetes_vLLM started with an initialization commit for serving models with vLLM on Kubernetes. The next day, website_ots started as the Old Town Studios marketing site."
 date: 2026-08-06
 tags: ["Engineering"]
 readTime: "1 min read"
@@ -9,12 +9,8 @@ source: telegram-bot
 
 ## Starting Kubernetes_vLLM
 
-On July 13, 2026, work began on **Kubernetes_vLLM** with a single initialization commit. This project appears to focus on deploying vLLM—a high-performance inference engine for large language models—within a Kubernetes environment. The initial commit established the foundation for what will likely involve container orchestration, model serving configurations, and scaling strategies.
+On July 13, 2026, **Kubernetes_vLLM** started with an initialization commit. The repository is for serving models with vLLM on Kubernetes. That commit is the start of the repo, not a running cluster.
 
 ## Launching website_ots
 
-The following day, July 14, saw the start of **website_ots** with its own initial commit. This project represents a new web presence, though the specific purpose of "ots" remains to be defined in future work.
-
-## A Cleanup on the Side
-
-Also on July 14, a related repository called **websiteots-deletion_scheduled-84435649** received two commits: an initial commit followed immediately by a deletion of its README.md file. This suggests a repository that was created and then quickly cleaned up, possibly as part of a testing or setup process for the main website_ots project.
+The next day, July 14, **website_ots** started. It is the marketing site for Old Town Studios, built with Astro. The first commit put the site in the repository. The pages and the brand kit came in the commits after it.

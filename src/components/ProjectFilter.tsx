@@ -58,21 +58,28 @@ export default function ProjectFilter({ projects }: Props) {
       <div className="list">
         {filtered.map((project) => (
           <article key={project.id} className="project">
-            <div className="top">
-              <h3>{project.title}</h3>
+            <a className="card" href={project.href}>
+              <div className="top">
+                <h3>{project.title}</h3>
+                <span className="read">Read</span>
+              </div>
+              <p>{project.description}</p>
+              <p className="tags">{project.tags.join(' · ')}</p>
+            </a>
+            {(project.github || project.demo !== '#') && (
               <div className="links">
-                <a href={project.github} target="_blank" rel="noopener noreferrer">
-                  Code
-                </a>
+                {project.github && (
+                  <a href={project.github} target="_blank" rel="noopener noreferrer">
+                    Code
+                  </a>
+                )}
                 {project.demo !== '#' && (
                   <a href={project.demo} target="_blank" rel="noopener noreferrer">
                     Live
                   </a>
                 )}
               </div>
-            </div>
-            <p>{project.description}</p>
-            <p className="tags">{project.tags.join(' · ')}</p>
+            )}
           </article>
         ))}
       </div>
@@ -112,12 +119,27 @@ export default function ProjectFilter({ projects }: Props) {
         }
 
         .project {
-          padding: 1.75rem 0;
           border-top: 1px solid var(--line);
         }
 
         .project:last-child {
           border-bottom: 1px solid var(--line);
+        }
+
+        .card {
+          display: block;
+          padding: 1.75rem 0;
+          text-decoration: none;
+          color: inherit;
+        }
+
+        .card:hover {
+          color: inherit;
+        }
+
+        .card:hover h3,
+        .card:hover .read {
+          color: var(--accent);
         }
 
         .top {
@@ -133,10 +155,17 @@ export default function ProjectFilter({ projects }: Props) {
           margin: 0;
         }
 
+        .read {
+          flex-shrink: 0;
+          font-size: 0.9rem;
+          color: var(--muted);
+        }
+
         .links {
           display: flex;
           gap: 0.9rem;
           flex-shrink: 0;
+          padding-bottom: 1.25rem;
         }
 
         .links a {

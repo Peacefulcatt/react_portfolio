@@ -3,31 +3,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../data/site';
 
 const skills = [
-  { name: 'Frontend', items: ['React', 'Astro', 'JavaScript', 'HTML/CSS'] },
-  { name: 'Backend', items: ['Node.js', 'Express', 'Python', 'Django'] },
-  { name: 'Data', items: ['MongoDB', 'PostgreSQL', 'Firebase', 'MySQL'] },
-  { name: 'Focus', items: ['AI Systems', 'IoT', 'Healthcare Tech', 'UX Craft'] },
-];
-
-const experience = [
-  {
-    year: '2022 — Present',
-    role: 'Senior Software Engineer',
-    company: 'Tech Solutions Inc.',
-    description: 'Leading frontend development and shipping product features end to end.',
-  },
-  {
-    year: '2019 — 2022',
-    role: 'Software Engineer',
-    company: 'Digital Innovations',
-    description: 'Built and maintained web applications with React and Node.js.',
-  },
-  {
-    year: '2017 — 2019',
-    role: 'Junior Developer',
-    company: 'StartUp Labs',
-    description: 'Shipped responsive interfaces and improved product reliability.',
-  },
+  { name: 'Languages', items: ['Python', 'TypeScript', 'Dart'] },
+  { name: 'Cloud', items: ['Firebase', 'Firestore', 'REST APIs', 'Qdrant'] },
+  { name: 'Product', items: ['Flutter', 'CAD/CAM', 'Computer vision', 'PyQt'] },
+  { name: 'Devices', items: ['Embedded Linux', 'Buildroot', 'MQTT', 'SQLite'] },
 ];
 ---
 
@@ -37,12 +16,15 @@ const experience = [
       <h1 class="section-heading reveal">About</h1>
       <div class="intro reveal reveal-delay-1">
         <p class="section-lead">
-          I'm a software engineer with 5+ years of experience building digital products.
-          My path started with a first website at 15, and grew into a focus on intelligent
-          systems for healthcare and connected devices.
+          I am a software engineer. The work I like has a clear edge: a machine, a small
+          device, or a phone talking to a backend. I want to know where the data comes from,
+          who is allowed to change it, and what still works when the other side is down.
         </p>
         <p class="section-lead">
-          Away from the keyboard, I'm usually outdoors, reading sci-fi, or testing a new recipe.
+          Python is where most of that starts. I use TypeScript on the web and Dart when the
+          product is a mobile app. I also have experience on the cloud side, with Firebase
+          for sign-in and stored data, and with REST APIs between a client and that data.
+          That is a different kind of problem from a device image, and I am at home in both.
         </p>
       </div>
     </div>
@@ -64,25 +46,6 @@ const experience = [
     </div>
   </section>
 
-  <section class="section">
-    <div class="container narrow">
-      <h2 class="section-heading reveal">Experience</h2>
-      <ol class="timeline">
-        {
-          experience.map((item) => (
-            <li class="reveal">
-              <div class="year">{item.year}</div>
-              <div>
-                <h3>{item.role}</h3>
-                <p class="company">{item.company}</p>
-                <p>{item.description}</p>
-              </div>
-            </li>
-          ))
-        }
-      </ol>
-    </div>
-  </section>
 </BaseLayout>
 
 <style>
@@ -120,46 +83,6 @@ const experience = [
     font-size: 0.98rem;
   }
 
-  .timeline {
-    list-style: none;
-    margin: 2.5rem 0 0;
-    padding: 0;
-    display: grid;
-    gap: 0;
-  }
-
-  .timeline li {
-    display: grid;
-    grid-template-columns: 9rem 1fr;
-    gap: 1.5rem;
-    padding: 1.5rem 0;
-    border-top: 1px solid var(--line);
-  }
-
-  .timeline li:last-child {
-    border-bottom: 1px solid var(--line);
-  }
-
-  .year {
-    font-size: 0.92rem;
-    color: var(--accent);
-  }
-
-  .timeline h3 {
-    font-size: 1.15rem;
-    margin-bottom: 0.25rem;
-  }
-
-  .company {
-    color: var(--muted);
-    margin-bottom: 0.4rem;
-  }
-
-  .timeline p:last-child {
-    margin: 0;
-    color: var(--muted);
-  }
-
   @media (max-width: 900px) {
     .skills {
       grid-template-columns: repeat(2, 1fr);
@@ -167,8 +90,7 @@ const experience = [
   }
 
   @media (max-width: 560px) {
-    .skills,
-    .timeline li {
+    .skills {
       grid-template-columns: 1fr;
     }
   }

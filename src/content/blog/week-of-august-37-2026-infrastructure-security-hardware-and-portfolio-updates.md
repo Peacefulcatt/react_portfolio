@@ -25,7 +25,7 @@ Finally, I implemented active security testing using Dockerized Kali tools, addi
 
 ## Hardware and Real-Time Monitoring
 
-I set up a live web dashboard on a Raspberry Pi (accessible at `pi4:8091`) for an Arduino connected via `/dev/ttyACM0` at 115200 baud. The dashboard uses a Python stdlib server with Server-Sent Events (SSE) and a minimal sparkline UI showing session min, max, and range. By analyzing the data pattern—resting around 9.8 with spikes to about 20 on a jerk—I confirmed it was an accelerometer axis in m/s², not a gyroscope, and updated the labels accordingly. The script lives at `~/Desktop/arduino_dashboard/app.py` and runs detached, surviving SSH disconnects (but not reboots).
+I set up a live dashboard on a Raspberry Pi for an Arduino accelerometer on a serial port. The page is a small Python server with server-sent events and a sparkline of the session minimum, maximum, and range. The trace sat near 9.8 m/s² and spiked when the board was jerked, which is an accelerometer axis rather than a gyroscope. The process keeps running after an SSH session ends, and it stops when the Pi reboots.
 
 ## Portfolio and Blog Publishing
 

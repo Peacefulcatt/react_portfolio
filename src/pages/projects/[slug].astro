@@ -1,0 +1,85 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { withBase } from '../../utils/paths';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+---
+
+<BaseLayout title={project.data.title} description={project.data.description}>
+  <article class="section">
+    <div class="container article">
+      <a class="back" href={withBase('/projects')}>← Projects</a>
+      <header class="reveal">
+        <h1>{project.data.title}</h1>
+        <p class="summary">{project.data.description}</p>
+        <p class="meta">{project.data.tags.join(' · ')}</p>
+      </header>
+      <div class="content reveal reveal-delay-1">
+        <Content />
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .article {
+    max-width: 42rem;
+  }
+
+  .back {
+    display: inline-block;
+    margin-bottom: 2rem;
+    text-decoration: none;
+    font-size: 0.92rem;
+    color: var(--accent);
+  }
+
+  header h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 1rem;
+  }
+
+  .summary {
+    color: var(--ink);
+    font-size: 1.12rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .meta {
+    color: var(--muted);
+    font-size: 0.92rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .content :global(h2) {
+    margin-top: 2.25rem;
+    font-size: 1.4rem;
+  }
+
+  .content :global(h3) {
+    margin-top: 1.5rem;
+  }
+
+  .content :global(p),
+  .content :global(li) {
+    color: var(--muted);
+    font-size: 1.05rem;
+  }
+
+  .content :global(ul),
+  .content :global(ol) {
+    padding-left: 1.2rem;
+  }
+</style>

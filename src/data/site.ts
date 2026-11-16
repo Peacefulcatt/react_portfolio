@@ -3,16 +3,14 @@ export const site = {
   brand: 'UMUT YILDIZ',
   title: 'Software Engineer',
   tagline:
-    'Building intelligent solutions at the intersection of AI, IoT, and healthcare.',
+    'I build software for machines, small devices, and cloud-backed apps.',
   description:
-    'Portfolio of Umut Yıldız — software engineer exploring AI and IoT innovations in healthcare.',
+    'Portfolio of Umut Yıldız, a software engineer working across devices, desktop tools, and cloud-backed apps.',
   email: 'umutyldz2626@gmail.com',
   location: 'Turkey',
   phone: '',
   social: {
     github: 'https://github.com/Peacefulcatt',
-    linkedin: 'https://linkedin.com',
-    twitter: 'https://twitter.com',
   },
 } as const;
 

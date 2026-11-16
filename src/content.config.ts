@@ -20,7 +20,8 @@ const projects = defineCollection({
     title: z.string(),
     description: z.string(),
     tags: z.array(z.string()),
-    github: z.string().url(),
+    /** Public repository URL. Omit to hide the Code link on /projects. */
+    github: z.string().url().optional(),
     /** Live demo URL; use "#" to hide the Live link on /projects. */
     demo: z.string().default('#'),
     image: z.string().optional(),

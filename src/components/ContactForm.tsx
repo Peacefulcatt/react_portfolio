@@ -1,5 +1,9 @@
 import { useState, type FormEvent } from 'react';
 
+type Props = {
+  email: string;
+};
+
 type FormState = {
   name: string;
   email: string;
@@ -10,11 +14,9 @@ type Errors = Partial<FormState>;
 
 const initial: FormState = { name: '', email: '', message: '' };
 
-export default function ContactForm() {
+export default function ContactForm({ email }: Props) {
   const [form, setForm] = useState<FormState>(initial);
   const [errors, setErrors] = useState<Errors>({});
-  const [submitting, setSubmitting] = useState(false);
-  const [success, setSuccess] = useState(false);
 
   const validate = () => {
     const next: Errors = {};
@@ -33,13 +35,11 @@ export default function ContactForm() {
     event.preventDefault();
     if (!validate()) return;
 
-    setSubmitting(true);
-    window.setTimeout(() => {
-      setSubmitting(false);
-      setSuccess(true);
-      setForm(initial);
-      window.setTimeout(() => setSuccess(false), 3000);
-    }, 900);
+    const subject = encodeURIComponent(`Portfolio message from ${form.name.trim()}`);
+    const body = encodeURIComponent(
+      `${form.message.trim()}\n\n${form.name.trim()}\n${form.email.trim()}`,
+    );
+    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
   };
 
   return (
@@ -88,15 +88,10 @@ export default function ContactForm() {
         {errors.message && <span>{errors.message}</span>}
       </div>
 
-      <button className="btn btn-primary" type="submit" disabled={submitting}>
-        {submitting ? 'Sending...' : 'Send message'}
+      <button className="btn btn-primary" type="submit">
+        Email me
       </button>
-
-      {success && (
-        <p className="success" role="status">
-          Message sent. I&apos;ll get back to you soon.
-        </p>
-      )}
+      <p className="hint">Opens your email app with this message addressed to me. Nothing is stored on the site.</p>
 
       <style>{`
         .contact-form {
@@ -140,7 +135,7 @@ export default function ContactForm() {
         }
 
         .field span,
-        .success {
+        .hint {
           font-size: 0.9rem;
         }
 
@@ -148,14 +143,9 @@ export default function ContactForm() {
           color: #b42318;
         }
 
-        .success {
+        .hint {
           margin: 0;
           color: var(--muted);
-        }
-
-        .btn:disabled {
-          opacity: 0.6;
-          cursor: wait;
         }
       `}</style>
     </form>
